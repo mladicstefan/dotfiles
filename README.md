@@ -90,29 +90,51 @@ hyprlock/
 
 ## ⚙️ Installation
 
-1. **Backup existing configuration**:
+### Automated Installation (Recommended)
+
+1. **Clone this repository**:
+   ```bash
+   git clone https://github.com/yourusername/dotfiles
+   cd dotfiles
+   ```
+
+2. **Run the installation script**:
+   ```bash
+   chmod +x install.sh
+   ./install.sh
+   ```
+
+The script will automatically:
+- Install all required packages via `pacman`
+- Install optional AUR packages (if `yay` is available)
+- Backup your existing Hyprland configuration
+- Copy the dotfiles to `~/.config/hypr`
+- Enable necessary systemd services
+- Set proper file permissions
+
+### Manual Installation
+
+If you prefer to install manually:
+
+1. **Install core dependencies**:
+   ```bash
+   sudo pacman -S hyprland hyprlock hypridle xdg-desktop-portal-hyprland wayland
+   ```
+
+2. **Install essential tools**:
+   ```bash
+   sudo pacman -S waybar swaync swww rofi-wayland wl-clipboard cliphist grim slurp
+   ```
+
+3. **Install system integration**:
+   ```bash
+   sudo pacman -S polkit polkit-kde-agent pipewire pipewire-pulse wireplumber
+   ```
+
+4. **Backup and copy configuration**:
    ```bash
    mv ~/.config/hypr ~/.config/hypr.backup
-   ```
-
-2. **Clone this repository**:
-   ```bash
-   git clone https://github.com/yourusername/dotfiles ~/.config/hypr
-   ```
-
-3. **Install dependencies**:
-   ```bash
-   # Core Hyprland components
-   sudo pacman -S hyprland hyprlock hypridle
-   
-   # Additional tools (adjust based on your configuration)
-   sudo pacman -S waybar swaync gammastep
-   ```
-
-4. **Apply configuration**:
-   ```bash
-   # Reload Hyprland configuration
-   hyprctl reload
+   cp -r . ~/.config/hypr
    ```
 
 ## 🎛️ Customization
